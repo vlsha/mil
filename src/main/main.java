@@ -3,7 +3,7 @@ package main;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Main {
+public class main {
 
     public static void main(String[] args){
 
@@ -20,6 +20,16 @@ public class Main {
         list.printList();
 
         list.bubbleSorter();
+
+        list.printList();
+
+        list.manualList(200);
+        list.manualList(650);
+        list.manualList(550);
+
+        list.printList();
+
+        list.selectionSort();
 
         list.printList();
 
@@ -94,7 +104,22 @@ class List{
              ) {
             System.out.print(d + " ");
         }
-
         System.out.println();
+    }
+
+    public void selectionSort(){
+        for (int i = 0; i < list.size(); i++){
+            double min = list.get(i);
+            int minId = i;
+            for (int j = i+1;j < list.size(); j++){
+                if (list.get(j) < min){
+                    min = list.get(j);
+                    minId = j;
+                }
+            }
+            double nn = list.get(i);
+            list.set(i, min);
+            list.set(minId, nn);
+        }
     }
 }
