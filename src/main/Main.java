@@ -89,7 +89,7 @@ class List{
 //  метод, который менят элементы списка местами
     private void toSwap(int firstElem, int secondElem){
         double nn = list.get(firstElem);
-        list.set(firstElem,l.get(secondElem));
+        list.set(firstElem,list.get(secondElem));
         list.set(secondElem, nn);
     }
 
