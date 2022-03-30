@@ -3,36 +3,30 @@ package main;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class main {
+public class Main {
 
     public static void main(String[] args){
 
-        List list = new List();
+        List firstList = new List();
+        List secondList = new List();
 
-        list.manualList(10);
-        list.manualList(5);
-        list.manualList(90);
-        list.manualList(100);
-        list.manualList(150);
-        list.manualList(0);
-        list.manualList(50);
+        firstList.manualList(50);
+        firstList.manualList(10);
+        firstList.manualList(1000);
+        firstList.manualList(55);
 
-        list.printList();
+        firstList.printList();
+        firstList.selectionSort();
+        firstList.printList();
 
-        list.bubbleSorter();
+        System.out.println();
+        System.out.println("-------------------------------------------");
+        System.out.println();
 
-        list.printList();
-
-        list.manualList(200);
-        list.manualList(650);
-        list.manualList(550);
-
-        list.printList();
-
-        list.selectionSort();
-
-        list.printList();
-
+        secondList.fullAutoList(4);
+        secondList.printList();
+        secondList.bubbleSorter();
+        secondList.printList();
 
     }
 }
@@ -40,26 +34,24 @@ public class main {
 class List{
 
     private ArrayList<Double> list = new ArrayList<>();
-    private Random rand;
+    private Random rand = new Random();
 
+//  автоматическое заполнение листа на опредленное количества элемента
     public void fullAutoList(int countNumber){
         for (int i = 0; i < countNumber; i++){
-            list.add(rand.nextDouble());
+            list.add(rand.nextDouble()+rand.nextInt());
         }
     }
-
+//  ручное добавление элемента в конец списка
     public boolean manualList(double number){
         return list.add(number);
-    }
-
-    public ArrayList<Double> getList() {
-        return list;
     }
 
     public void setList(ArrayList<Double> list) {
         this.list = list;
     }
 
+//  получение элемента списка
     public double getElemList(int indexElement){
         try {
             return list.get(indexElement);
@@ -70,10 +62,12 @@ class List{
         }
     }
 
+//    добавлние элемента по индексу
     public void setIndexElemList(int indexElemList, double elem){
         list.set(indexElemList,elem);
     }
 
+    //метод для удаления элемента по индексу
     public void removeElemList(int indexElement){
         try {
             list.remove(indexElement);
@@ -82,7 +76,7 @@ class List{
             System.out.print("Индекс последнего элемента: " + (list.size()-1));
         }
     }
-
+//  сортировка пузырком
     public void bubbleSorter(){
         for(int out = list.size()-1; out >= 1; out--){
             for (int in = 0; in < out; in++){
@@ -92,13 +86,14 @@ class List{
             }
         }
     }
-
+//  метод, который менят элементы списка местами
     private void toSwap(int firstElem, int secondElem){
         double nn = list.get(firstElem);
-        list.set(firstElem,list.get(secondElem));
+        list.set(firstElem,l.get(secondElem));
         list.set(secondElem, nn);
     }
 
+//  вывод списка
     public void printList(){
         for (double d: list
              ) {
@@ -107,6 +102,7 @@ class List{
         System.out.println();
     }
 
+//    сортировка отбором
     public void selectionSort(){
         for (int i = 0; i < list.size(); i++){
             double min = list.get(i);
